@@ -1,8 +1,7 @@
-                <!-- Language Selector -->
-                <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)"> 
-                    <option value="0"  selected> 英文 | English </option> 
-                    <option value="1" > 中文 | Chinese </option> 
-                   
-                            
-                </select>
+                <div class="post-lang-switch" aria-label="Language switcher">
+                    {% assign page_href = page.url | prepend: site.baseurl | replace: '//', '/' %}
+                    <a class="post-lang-switch__link js-lang-link" data-lang="en" href="{{ page_href }}?lang=en">English</a>
+                    <span class="post-lang-switch__sep">|</span>
+                    <a class="post-lang-switch__link js-lang-link" data-lang="zh" href="{{ page_href }}?lang=zh">中文（简体）</a>
+                </div>
 

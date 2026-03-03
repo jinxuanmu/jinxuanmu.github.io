@@ -224,7 +224,8 @@
     // get nodes
     var $zh = document.querySelector(".zh");
     var $en = document.querySelector(".en");
-    var $select = document.querySelector("select");
+    var $select = document.querySelector("select.sel-lang");
+    var $links = document.querySelectorAll(".js-lang-link");
 
     // Changes at v1.8.1: include lang flag as a url query. This interop well with catalog hash anchors.
     function getLang() { return new URLSearchParams(document.location.search).get("lang") }
@@ -240,18 +241,32 @@
         var lang = getLang()
         // en
         if (lang !== "zh") {
-            $select.selectedIndex = 0;
+            if ($select) $select.selectedIndex = 0;
             $en.style.display = "block";
             $en.classList.add("active");
             $zh.style.display = "none";
             $zh.classList.remove("active");
             // default to zh-cn
         } else {
-            $select.selectedIndex = 1;
+            if ($select) $select.selectedIndex = 1;
             $zh.style.display = "block";
             $zh.classList.add("active");
             $en.style.display = "none";
             $en.classList.remove("active");
+        }
+
+        if ($links && $links.length) {
+            $links.forEach(function (a) {
+                var target = a.getAttribute("data-lang");
+                var isActive = (lang !== "zh" && target === "en") || (lang === "zh" && target === "zh");
+                if (isActive) {
+                    a.classList.add("active");
+                    a.setAttribute("aria-current", "page");
+                } else {
+                    a.classList.remove("active");
+                    a.removeAttribute("aria-current");
+                }
+            });
         }
         // interop with catalog 
         generateCatalog(".catalog-body");
@@ -265,6 +280,18 @@
             lang = "zh"
         }
         setLang(lang)
+    }
+
+    // handle link click
+    if ($links && $links.length) {
+        $links.forEach(function (a) {
+            a.addEventListener("click", function (e) {
+                var target = a.getAttribute("data-lang");
+                if (!target) return;
+                e.preventDefault();
+                setLang(target);
+            });
+        });
     }
 
     // init

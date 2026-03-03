@@ -3,7 +3,7 @@ layout:     post
 title:      "What Drives You to Become a Manager"
 subtitle:   "With great power comes great responsibility"
 date:       2024-09-08 10:30:00
-author:     "Jinxuan(Jin) Mu"
+author:     "Jinxuan Mu"
 header-img: "img/post_bg_20240908.jpg"
 catalog: true
 tags:

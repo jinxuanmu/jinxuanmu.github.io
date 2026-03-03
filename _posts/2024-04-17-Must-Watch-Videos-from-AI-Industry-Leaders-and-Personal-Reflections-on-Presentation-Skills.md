@@ -3,7 +3,7 @@ layout:     post
 title:      "Must-Watch Videos from AI Industry Leaders and Personal Reflections on Presentation Skills "
 subtitle:   "Every viewing brings fresh insights"
 date:       2024-04-17 12:00:00
-author:     "Jinxuan(Jin) Mu"
+author:     "Jinxuan Mu"
 header-img: "img/post_bg_20240417.jpg"
 catalog: true
 tags:

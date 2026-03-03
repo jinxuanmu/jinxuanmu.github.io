@@ -3,7 +3,7 @@ layout:     post
 title:      "One Year in a Startup: Insights and Reflections"
 subtitle:   "A Journey of Strategic Thinking and Hands-on Experience"
 date:       2024-07-17 12:00:00
-author:     "Jinxuan(Jin) Mu"
+author:     "Jinxuan Mu"
 header-img: "img/post_bg_20240717.jpg"
 catalog: true
 tags:
