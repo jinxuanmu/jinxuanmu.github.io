@@ -737,6 +737,25 @@ select.sel-lang {
   min-height: 28px;
   font-size: 14px;
 }
+.post-lang-switch {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+  font-size: 14px;
+}
+.post-lang-switch__link {
+  color: #337ab7;
+}
+.post-lang-switch__link.active {
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: default;
+  pointer-events: none;
+}
+.post-lang-switch__sep {
+  padding: 0 6px;
+  color: #999;
+}
 table {
   margin-top: 10px;
 }

@@ -93,6 +93,20 @@ tags:
 
 > Note: `tags` section can also be written as `tags: [Life, Meta]`.
 
+### Bilingual Posts (EN / 简体中文)
+
+To enable the **post-level language switcher** at the top of each post, create **two posts** under `_posts/` (one English, one Simplified Chinese) and add these fields to the front-matter:
+
+```yml
+lang: en    # or `zh`
+lang_group: your-post-id
+```
+
+Both posts must share the same `lang_group` value. Templates are provided at:
+
+- `_doc/PostTemplate.Bilingual.EN.md`
+- `_doc/PostTemplate.Bilingual.ZH.md`
+
 After [Rake](https://github.com/ruby/rake) is introduced, we can use the command below to simplify the post creation:
 
 ```

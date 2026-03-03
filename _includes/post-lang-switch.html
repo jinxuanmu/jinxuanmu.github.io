@@ -1,0 +1,74 @@
+{% comment %}
+Post-level language switcher (zh <-> en).
+
+Usage:
+- Add `lang: en|zh` and `lang_group: some-id` in bilingual posts' front matter (recommended).
+- If not provided, we try to infer from slug suffix: `-en` / `-ch` (fallback).
+
+Renders nothing for monolingual posts.
+{% endcomment %}
+
+{% assign current_lang = page.lang | default: "" %}
+{% assign group = page.lang_group | default: "" %}
+{% assign slug = page.slug | default: "" %}
+
+{% if current_lang == "" or group == "" %}
+  {% assign suffix = slug | slice: -3, 3 %}
+  {% if suffix == "-en" %}
+    {% if current_lang == "" %}{% assign current_lang = "en" %}{% endif %}
+    {% if group == "" %}{% assign group = slug | replace: "-en", "" %}{% endif %}
+  {% elsif suffix == "-ch" %}
+    {% if current_lang == "" %}{% assign current_lang = "zh" %}{% endif %}
+    {% if group == "" %}{% assign group = slug | replace: "-ch", "" %}{% endif %}
+  {% elsif suffix == "-zh" %}
+    {% if current_lang == "" %}{% assign current_lang = "zh" %}{% endif %}
+    {% if group == "" %}{% assign group = slug | replace: "-zh", "" %}{% endif %}
+  {% endif %}
+{% endif %}
+
+{% assign en_url = "" %}
+{% assign zh_url = "" %}
+
+{% if group != "" %}
+  {%- comment -%} Preferred: match by explicit lang_group {%- endcomment -%}
+  {% for p in site.posts %}
+    {% if p.lang_group and p.lang_group == group %}
+      {% if p.lang == "en" %}{% assign en_url = p.url %}{% endif %}
+      {% if p.lang == "zh" %}{% assign zh_url = p.url %}{% endif %}
+    {% endif %}
+  {% endfor %}
+
+  {%- comment -%} Fallback: match by slug suffix pattern {%- endcomment -%}
+  {% if en_url == "" or zh_url == "" %}
+    {% for p in site.posts %}
+      {% if en_url == "" and p.slug == group | append: "-en" %}
+        {% assign en_url = p.url %}
+      {% endif %}
+      {% if zh_url == "" and p.slug == group | append: "-ch" %}
+        {% assign zh_url = p.url %}
+      {% endif %}
+      {% if zh_url == "" and p.slug == group | append: "-zh" %}
+        {% assign zh_url = p.url %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+{% if en_url != "" and zh_url != "" %}
+  {% assign en_href = en_url | prepend: site.baseurl | replace: '//', '/' %}
+  {% assign zh_href = zh_url | prepend: site.baseurl | replace: '//', '/' %}
+
+  <div class="post-lang-switch" aria-label="Language switcher">
+    <a
+      class="post-lang-switch__link {% if current_lang == 'en' %}active{% endif %}"
+      href="{{ en_href }}"
+      {% if current_lang == 'en' %}aria-current="page"{% endif %}
+    >English</a>
+    <span class="post-lang-switch__sep">|</span>
+    <a
+      class="post-lang-switch__link {% if current_lang == 'zh' %}active{% endif %}"
+      href="{{ zh_href }}"
+      {% if current_lang == 'zh' %}aria-current="page"{% endif %}
+    >中文（简体）</a>
+  </div>
+{% endif %}

@@ -20,6 +20,9 @@ layout: default
                 col-md-10 col-md-offset-1
                 post-container">
 
+                <!-- Post Language Switch (zh <-> en) -->
+                {% include post-lang-switch.html %}
+
                 <!-- Multi-Lingual -->
                 {% if page.multilingual %}
                     {% include multilingual-sel.html %}
