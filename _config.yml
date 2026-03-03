@@ -3,7 +3,7 @@ title: Jinxuan Mu Blog
 SEOTitle: Jinxuan Mu Blog | 慕金轩的博客
 header-img: img/home_bg.jpg
 email: jinxuanmu1028@gmail.com
-description: "Hi, this is Jinxuan(Jin)'s blog. Welcome to my world."
+description: "Hi, this is Jinxuan's blog. Welcome to my world."
 keyword: "慕金轩, 金轩，Jinxuan, Jin, jinxuan, jinxuanmu, 慕金轩的博客, Jin Blog, 博客, 个人网站, 互联网, 产品经理, 产品, 运营, 营销, 品牌, product, product manager, operation, marketing, program management，strategy "
 url: "https://jinxaunmu/jinxuanblog.github.io" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
@@ -75,7 +75,7 @@ ga_domain: auto
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "Product | Marketing | Operation | Strategy | Entrepreneurship"
-sidebar-avatar: /img/avarta_jin.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar_Jin.jpg # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
