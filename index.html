@@ -1,9 +1,9 @@
----
 layout: page
 description: "Keep thinking, keep feeling"
 ---
 
 {% for post in paginator.posts %}
+{% if post.lang != 'zh' %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-title">
@@ -27,6 +27,7 @@ description: "Keep thinking, keep feeling"
     </p>
 </div>
 <hr>
+{% endif %}
 {% endfor %}
 
 <!-- Pager -->
